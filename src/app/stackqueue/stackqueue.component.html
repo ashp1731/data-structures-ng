@@ -1,40 +1,26 @@
-<div class="container">
-  	<div class="row justify-content-left">
-    	<div class="col-2">
-      		Stack Operations
-		</div>
-		<div class = "col1">
-			Stack
-		</div>
-	</div>
-	<div class = "row">
-		<div class = "col-2">
-			<div class="input-group push">		
-  			<div class="input-group-prepend">
-    		<button class="btn btn-outline-secondary" type="button" id="button-push">Push</button>
-  			<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="button-push">
-			</div>
-			
-			<div class = "input-group pop">
-			<button class="btn btn-outline-secondary" type="button" id="button-pop">Pop</button>
-	`		</div>
-	
-			<div class = "input-group peek">
-			<button class="btn btn-outline-secondary" type="button" id="button-peek">Peek</button>
-			<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="button-peek">
-			</div>	
-			</div>
-		</div>
-		<div class = "col-1">
-		<ul class="list-group">
-		  <li class="list-group-item">1</li>
-		  <li class="list-group-item">2</li>
-		  <li class="list-group-item">3</li>
-		  <li class="list-group-item">4</li>
-		  <li class="list-group-item">5</li>
+<div class="container-fluid">
+	<div class = "row bg-light">
+		<div class = "col-3 m-5">
+		<ul class="list-group shadow-sm mb-5 bg-white rounded">
+		  <li class="list-group-item list-group-item-action" *ngFor="let item of (stack?stack.data:[])">{{item}}</li>
 		</ul>
 		</div>
 	</div>
+	<div class="row">
+		<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+		  <div class="input-group mr-2">
+		    <div class="input-group-prepend">
+				<button type="button" class = "btn btn-primary" (click) = "push()">Push</button>
+		    </div>
+		    <input type="text" class="form-control" placeholder="Input group example" [(ngModel)]="inputToPush" aria-label="Input group example" aria-describedby="btnGroupAddon">
+		  </div>
+		    <button type="button" class="btn btn-primary  mr-2" (click) = "pop()">Pop</button>
+		  <div class="input-group">
+		    <div class="input-group-prepend">
+			    <button type="button" class="btn btn-primary" (click) = "peek()">Peek</button>
+		    </div>
+			<span type="text" class="input-group">{{peekValue}}</span>
+		  </div>
+		</div>
+	</div>
 </div>	
-
- 
