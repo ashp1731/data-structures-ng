@@ -1,3 +1,4 @@
+<br>
 <div class="container-fluid">
 	<div class = "row bg-light">
 		<div class = "col-3 m-5">
@@ -6,21 +7,33 @@
 		</ul>
 		</div>
 	</div>
+	<br>
 	<div class="row">
 		<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 		  <div class="input-group mr-2">
 		    <div class="input-group-prepend">
 				<button type="button" class = "btn btn-primary" (click) = "push()">Push</button>
 		    </div>
-		    <input type="text" class="form-control" placeholder="Input group example" [(ngModel)]="inputToPush" aria-label="Input group example" aria-describedby="btnGroupAddon">
+		    <input type="text" class="form-control" [(ngModel)]="inputToPush">
 		  </div>
 		    <button type="button" class="btn btn-primary  mr-2" (click) = "pop()">Pop</button>
-		  <div class="input-group">
+		  <div class="input-group mr-2">
 		    <div class="input-group-prepend">
 			    <button type="button" class="btn btn-primary" (click) = "peek()">Peek</button>
+			    <input type = "text" class="form-control" value =  "{{peekValue}}" readonly>
 		    </div>
-			<span type="text" class="input-group">{{peekValue}}</span>
 		  </div>
+		  <button type="button" class = "btn btn-primary mr-2" (click) = "clear()">Clear Stack</button>
 		</div>
+	</div>
+	<div class = "row">
+		<p *ngIf = 'stackEmpty' >
+  			<ngb-alert [dismissible]="false">
+    		Stack is empty.
+  			</ngb-alert>
+		</p>
+		<p *ngIf = 'popClicked' >
+			Popped Value : <input type = "text" class="form-control" value =  "{{popValue}}" readonly>
+		</p>
 	</div>
 </div>	

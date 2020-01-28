@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StackqueueComponent } from './stackqueue/stackqueue.component';
 import { HttpClientModule } from '@angular/common/http';
+import { QueuecomponentComponent } from './queuecomponent/queuecomponent.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StackqueueComponent
+    StackqueueComponent,
+    QueuecomponentComponent
   ],
   imports: [
     BrowserModule,
