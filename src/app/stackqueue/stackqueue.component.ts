@@ -74,10 +74,10 @@ export class StackqueueComponent implements OnInit {
         } else {
             this.stackEmpty = false
             this.popClicked = false
-            this.http.post<string>( "http://localhost:8080/stack/v1/peek", this.stack, {responseType:"text" | "json"}).subscribe( peekData => {
+            this.http.post( "http://localhost:8080/stack/v1/peek", this.stack, {responseType:'text' }).subscribe( (data) => {
                 console.log( "*********************************************" )
-                console.log( peekData )
-                this.peekValue = peekData;
+                console.log( data )
+                this.peekValue = data;
                 console.log( this.peekValue )
             } )
         }
