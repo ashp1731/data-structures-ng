@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 interface Queue {
     empty:boolean;
     size:number;
-    data:Array<string>;
+    underlyingData:Array<string>;
 }
 
 @Component({
@@ -15,35 +15,76 @@ interface Queue {
 export class QueuecomponentComponent implements OnInit {
     
     queue: Queue
-    inputToEnqueue:string = "Hello123"
+    inputToEnqueue:string
     peekValue : string
+    queueEmpty: boolean = false
+    dequeueValue : string
+    dequeueClicked : boolean = false
     
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-      this.http.get<Queue>("http://localhost:8080/stack/v1/new-queue").subscribe(data => {
+      this.http.get<Queue>("http://localhost:8080/queue/v1/new-queue").subscribe(data => {
           this.queue = data;
       })
   }
 
   enqueue () {
-      console.log("this.inputToPush = " + this.inputToEnqueue);
-      console.log("this.stack = " + this.queue);
-      this.http.post<Queue>("http://localhost:8080/stack/v1/push", {inStack:this.queue, inStr:this.inputToEnqueue}).subscribe(data => {
-          this.queue = data;
-      })
+
+    this.dequeueClicked = false;
+    this.queueEmpty = false;
+      if(this.inputToEnqueue.length > 0){
+          this.dequeueValue = ''
+          this.peekValue = ''
+        this.http.post<Queue>("http://localhost:8080/queue/v1/enqueue", {inQueue:this.queue, inStr:this.inputToEnqueue}).subscribe(data => {
+            this.queue = data;
+        })
+        this.inputToEnqueue = ''
+      }
+    
   }
   
   dequeue () {
-      console.log("this.stack =" + this.queue)
-      this.http.post<Queue>("http://localhost:8080/stack/v1/pop", this.queue).subscribe(data => {
-          this.queue = data;
-      })
+      this.peekValue = ''
+      if(this.queue.empty){
+          this.dequeueValue = ''
+          this.queueEmpty = true
+      }
+      else {
+        this.queueEmpty = false
+        this.dequeueValue = this.queue.underlyingData[this.queue.underlyingData.length - 1]
+        this.dequeueClicked = true
+        this.http.post<Queue>("http://localhost:8080/queue/v1/dequeue", this.queue).subscribe(data => {
+            this.queue = data;
+        })
+      }
+
+ 
   }
   
       peek () {
-      this.http.post<string>("http://localhost:8080/stack/v1/peek", this.queue).subscribe(data => {
-          this.peekValue = data;
-      })
+
+        if(this.queueEmpty){
+            this.queueEmpty = true
+        }
+        else {
+            this.queueEmpty = false
+            this.dequeueClicked = false
+            this.http.post("http://localhost:8080/queue/v1/peek", this.queue, {responseType:"text"}).subscribe(data => {
+                this.peekValue = data;
+            })
+        }
+ 
+  }
+
+  clear() {
+    
+    this.queueEmpty = false
+    this.dequeueClicked = false
+    this.peekValue = ''
+    this.dequeueValue = ''
+    this.http.get<Queue>("http://localhost:8080/queue/v1/new-queue").subscribe(data => {
+        this.queue = data;
+    })
   }
 }
