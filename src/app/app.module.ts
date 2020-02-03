@@ -9,13 +9,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StackqueueComponent } from './stackqueue/stackqueue.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QueuecomponentComponent } from './queuecomponent/queuecomponent.component';
+import { ArrayListComponent } from './array-list/array-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StackqueueComponent,
-    QueuecomponentComponent
+    QueuecomponentComponent,
+    ArrayListComponent
   ],
   imports: [
     BrowserModule,
