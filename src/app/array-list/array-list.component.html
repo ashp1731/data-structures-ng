@@ -1,0 +1,40 @@
+<br>
+<div class="container-fluid">
+	<div class = "row bg-light">
+		<div class = "col-3 m-5">
+		<ul class="list-group shadow-sm mb-5 bg-white rounded">
+		  <li class="list-group-item list-group-item-action" *ngFor="let item of (arrayList?arrayList.underlyingArrayList:[])">{{item}}</li>
+		</ul>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+		  <div class="input-group mr-2">
+		    <div class="input-group-prepend">
+				<button type="button" class = "btn btn-primary" (click) = "add()">Add</button>
+		    </div>
+		    <input type="text" class="form-control" [(ngModel)]="inputToAdd" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
+          </div>
+          <div class="input-group mr-2">
+		    <div class="input-group-prepend">
+				<button type="button" class = "btn btn-primary" (click) = "addAt()">Add At</button>
+		    </div>
+            <input type="text" class="form-control" size = "2" [(ngModel)]="inputToAddIndex" placeholder = "Index" aria-label="Add Element" aria-describedby="btnGroupAddon">
+            <input type="text" class="form-control mr-3" size = "8" [(ngModel)]="inputToAddValue" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
+          </div>
+        </div>
+    <br>
+    <div class = "row">
+        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+		  <div class="input-group">
+		    <div class="input-group-prepend">
+				<button type="button" class="btn btn-primary" (click) = "delete()">Delete</button>
+				<input type = "text" class="form-control mr-2" [(ngModel)]="inputToDelete">
+		    </div>
+		  </div>
+          <button type="button" class = "btn btn-primary mr-3" (click) = "clear()">Clear ArrayList</button>
+        </div>
+    </div>
+</div>
+
