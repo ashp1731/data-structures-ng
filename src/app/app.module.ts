@@ -10,6 +10,7 @@ import { StackqueueComponent } from './stackqueue/stackqueue.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QueuecomponentComponent } from './queuecomponent/queuecomponent.component';
 import { ArrayListComponent } from './array-list/array-list.component';
+import { LinkedListComponent } from './linked-list/linked-list.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ArrayListComponent } from './array-list/array-list.component';
     AppComponent,
     StackqueueComponent,
     QueuecomponentComponent,
-    ArrayListComponent
+    ArrayListComponent,
+    LinkedListComponent
   ],
   imports: [
     BrowserModule,

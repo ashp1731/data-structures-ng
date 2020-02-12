@@ -1,0 +1,88 @@
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<br>
+
+	<!-- <div class = "row bg-light">
+	</div> -->
+	<!-- <br> -->
+	<div class = "Container w-75" style = "background-color : #eee">
+	<div class="row">
+		<ngb-tabset>
+			<ngb-tab title="Add" class = "pl-2">
+			  <ng-template ngbTabContent>
+				<br>
+				<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+					<div class="input-group mr-2 pl-2">
+						<div class="input-group-prepend  pl-4">
+							<button  type="button" class = "btn btn-primary" (click) = "addFirst()">Add First</button>
+						</div>
+						<input type="text" class="form-control" [(ngModel)]="inputToAdd" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
+					</div>
+					<br>
+					<div class="input-group mr-2 pl-2">
+						<div class="input-group-prepend pl-4">
+							<button type="button" class = "btn btn-primary" (click) = "addAt()">Add At</button>
+						</div>
+						<input type="text" class="form-control" size = "2" [(ngModel)]="inputToAddIndex" placeholder = "Index" aria-label="Add Element" aria-describedby="btnGroupAddon">
+						<input type="text" class="form-control mr-3" size = "8" [(ngModel)]="inputToAddValue" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
+					</div>
+					<br>
+					<br>
+					<div class="input-group mr-2 pl-4">
+						<div class="input-group-prepend pl-2">
+							<button type="button" class = "btn btn-primary" (click) = "addLast()">Add Last</button>
+						</div>
+						<input type="text" class="form-control mr-3" size = "8" [(ngModel)]="inputLastToAddValue" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
+					</div>
+				</div>	
+			  </ng-template>
+			</ngb-tab>
+		  
+			<ngb-tab title = "Remove">
+			  <ng-template ngbTabContent>
+				<br>
+				<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+					<div class="input-group mr-2 pl-2">
+						<div class="input-group-prepend  pl-4">
+							<button  type="button" class = "btn btn-primary" (click) = "removeFirst()">Remove First</button>
+						</div>
+					</div>
+					<br>
+					<div class="input-group mr-2 pl-2">
+						<div class="input-group-prepend pl-4">
+							<button type="button" class = "btn btn-primary" (click) = "removeAt()">Remove At</button>
+						</div>
+						<input type="text" class="form-control" size = "2" [(ngModel)]="inputToRemoveIndex" placeholder = "Index" aria-label="Add Element" aria-describedby="btnGroupAddon">
+					</div>
+					<br>
+					<div class="input-group mr-2 pl-4">
+						<div class="input-group-prepend pl-2">
+							<button type="button" class = "btn btn-primary" (click) = "removeLast()">Remove Last</button>
+						</div>
+					</div>
+			`	</div>
+			  </ng-template>
+			</ngb-tab>
+		  
+			<ngb-tab title="Clear">
+			  <ng-template ngbTabContent>
+				<br>
+				<div class = "input-group mr-2 pl-4">
+					<button type="button" class = "btn btn-primary mr-3" (click) = "clear()">Clear LinkedList</button>
+				</div>
+				<br>
+			  </ng-template>
+			</ngb-tab>
+		  </ngb-tabset>
+	</div>
+</div>
+	<br>
+<div class = "Container-fluid" style = "background-color: #eee">
+	<div id="footer">
+		<svg width="400" height="220">
+			<g transform="translate(5, 5)">
+			  <g class="links"></g>
+			  <g class="nodes"></g>
+			</g>
+		  </svg>        
+      </div>
+</div>
