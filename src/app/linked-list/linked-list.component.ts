@@ -1,7 +1,7 @@
 import { Component, OnInit, RootRenderer } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as d3 from 'd3';
-import { tree } from 'd3';
+import { tree, HierarchyNode } from 'd3';
 
 
 interface LinkedNode {
@@ -30,13 +30,15 @@ interface treeView {
 })
 export class LinkedListComponent implements OnInit {
 
-  linkedList : LinkedList
+  linkedList : LinkedList = {head:null, size:0, tail:null};
   inputToAdd : string;
   inputToAddValue:String
   inputToAddIndex : String
   inputLastToAddValue : string
   inputToRemoveIndex : string
   inputAddFirst : boolean = false;
+  descendentSliced:HierarchyNode<LinkedNode>[] = [];
+  descendent:HierarchyNode<LinkedNode>[] = [];
 
   constructor(private http: HttpClient) { }
  
@@ -45,7 +47,6 @@ export class LinkedListComponent implements OnInit {
     this.http.get<LinkedList>("http://localhost:8080/linkedlist/v1/new-linkedlist").subscribe(data => {
       this.linkedList = data;
       console.log(this.linkedList);
-      this.drawTree();
     })
     console.log(this.linkedList);
   }
@@ -82,7 +83,7 @@ export class LinkedListComponent implements OnInit {
   addLast(){
     this.http.post<LinkedList>("http://localhost:8080/linkedlist/v1/addLast" , {inLinkedList : this.linkedList, value : this.inputLastToAddValue}).subscribe(data => {
       this.linkedList = data;
-      console.log(this.inputLastToAddValue);
+      console.log("a-****************************************");
       console.log(this.linkedList);
   })
   this.inputLastToAddValue = ''
@@ -111,45 +112,5 @@ export class LinkedListComponent implements OnInit {
   }
 
   drawTree(){
-   
-    
-    // let treedata: treeView;
-    // let root: treeView;
-    // let layout = d3.tree().size([500,500])(root);
-    // let nodes = layout.descendants();
-    
-
-    var m = [20, 120, 20, 120],
-    w = 1280 - m[1] - m[3],
-    h = 800 - m[0] - m[2],
-    i = 0;
-    var treeLayout = d3.tree();
-    treeLayout.size([h, w]);
-    var root = d3.hierarchy(this.linkedList.head);
-    treeLayout(root);
-    
-    console.log(root);
-    // Nodes
-    d3.select('svg g.nodes')
-      .selectAll('circle.node')
-      .data(root.descendants())
-      .enter()
-      .append('circle')
-      .classed('node', true)
-      .attr('cx', function(d) {return d['x'];})
-      .attr('cy', function(d) {return d['y'];})
-      .attr('r', 4);
-
-    // Links
-    d3.select('svg g.links')
-      .selectAll('line.link')
-      .data(root.links())
-      .enter()
-      .append('line')
-      .classed('link', true)
-      .attr('x1', function(d) {return d.source['x'];})
-      .attr('y1', function(d) {return d.source['y'];})
-      .attr('x2', function(d) {return d.target['x'];})
-      .attr('y2', function(d) {return d.target['y'];});   
-      }
+  }
 }

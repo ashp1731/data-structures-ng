@@ -78,11 +78,17 @@
 	<br>
 <div class = "Container-fluid" style = "background-color: #eee">
 	<div id="footer">
-		<svg width="400" height="220">
-			<g transform="translate(5, 5)">
-			  <g class="links"></g>
-			  <g class="nodes"></g>
+		<!-- <svg width="660" height="500">
+			<g *ngIf="descendentSliced.length > 0;" transform="translate(90,20)">
+				<path class="link" *ngFor="let item of descendentSliced" style="stroke: red;" d={{"M" + item.y + "," + item.x + "C" + (item.y + item.parent.y) / 2 + "," + item.x
+				 + " " + (item.y + item.parent.y) / 2 + "," + item.parent.x
+				 + " " + item.parent.y + "," + item.parent.x}}/>
+				
+				<g *ngFor="let item of descendent" class="node node--internal" transform={{"translate(" + item.y + "," + item.x + ")" }}>
+					<circle r="15" style="stroke: black; fill: yellow;"></circle>
+					<text dy=".35em" x="-20" y="[object Object]" style="text-anchor: end;">{{item.data.element}}</text>
 			</g>
-		  </svg>        
-      </div>
+		</svg> -->
+		<app-d3-tree [(treeData)] = "linkedList.head"></app-d3-tree>
+	</div>
 </div>
