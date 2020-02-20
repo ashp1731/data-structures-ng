@@ -19,7 +19,7 @@ export class D3TreeComponent implements OnInit {
   nodes:any;
   g:any;
   link:any;
-  nodeRadius: number =  0;
+  nodeRadius: number =  20;
 
   constructor(private chartContainer: ElementRef){}
 
@@ -76,7 +76,7 @@ export class D3TreeComponent implements OnInit {
         node.append("circle")
           .attr("r", this.nodeRadius)
           .style("stroke", "blue")
-          .style("fill", "red");
+          .style("fill", "yellow");
           
         // adds the text to the node
         node.append("text")
