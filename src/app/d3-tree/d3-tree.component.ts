@@ -12,20 +12,20 @@ export class D3TreeComponent implements OnInit {
 
   height: number;
   width: number;
-  margin: any = {top: 20, right: 90, bottom: 30, left: 90};
+  margin: any = {top: 100, right: 90, bottom: 30, left: 90};
 
   svg:any;
   treeLayout: any;
   nodes:any;
   g:any;
   link:any;
-  nodeWidth: number = 15;
-  nodeHeight: number = 15;
-  nodeRadius: number = 5;
-  horizontalSeparationBetweenNodes: number = 60;
-  verticalSeparationBetweenNodes: number = 60;
+  nodeWidth: number = 50;
+  nodeHeight: number = 50;
+  nodeRadius: number = 20;
+  horizontalSeparationBetweenNodes: number = 0;
+  verticalSeparationBetweenNodes: number = 200;
   nodeTextDistanceY: string= "-5px";
-  nodeTextDistanceX: number= 5;
+  nodeTextDistanceX: number= 2;
 
   constructor(private chartContainer: ElementRef){}
 
@@ -41,8 +41,8 @@ export class D3TreeComponent implements OnInit {
     }
     let element = this.chartContainer.nativeElement;
 
-    var width  = 800 - this.margin.left - this.margin.right;
-    var height = 600 - this.margin.top - this.margin.bottom;
+    var width  = 1500 - this.margin.left - this.margin.right;
+    var height = 800 - this.margin.top - this.margin.bottom;
 
     this.width = element.offsetWidth - this.margin.left - this.margin.right;
     this.height = element.offsetHeight - this.margin.top - this.margin.bottom;
@@ -69,18 +69,19 @@ export class D3TreeComponent implements OnInit {
             + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
             + " " + d.parent.y + "," + d.parent.x;
           });
-
+        
+          console.log(this.nodes.descendants());
         var node = this.g.selectAll(".node") // gives all the nodes under 'g' (array of nodes)
         .data(this.nodes.descendants())
-        .enter().append("g")
+        .enter().append("g")  // for every element in data, do whatever comes after .enter
         .attr("class", d => "node z-index " + (d.children ? " node--internal" : " node--leaf"))
         .attr("transform", d => "translate(" + d.y + "," + d.x + ")");
 
         // adds the circle to the node
         node.append("circle")
-          .attr("r", 15)
+          .attr("r", this.nodeRadius)
           .style("stroke", "grey")
-          .style("fill", "red");
+          .style("fill", "yellow");
           
         // adds the text to the node
         node.append("text")
@@ -88,7 +89,7 @@ export class D3TreeComponent implements OnInit {
           .attr("x", d => d.children ? (d.data.value )  : d.data.value )
           .attr("y", d => d.children && d.depth !== 0 ? -(d.data.value ) : d)
           .style("text-anchor", d => d.children ? "end" : "start")
-          .text(d => d.data.element);
+          .text(d => d.data.element);  // 
       }
 }
   

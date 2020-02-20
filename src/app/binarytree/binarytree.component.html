@@ -1,0 +1,52 @@
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<br>
+
+	<!-- <div class = "row bg-light">
+	</div> -->
+	<!-- <br> -->
+	<div class = "Container w-75" style = "background-color : #eee">
+	<div class="row">
+		<br>
+		<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+			<br>
+			<div class="input-group mr-2 pl-2">
+				<div class="input-group-prepend  pl-4">
+					<button  type="button" class = "btn btn-primary" (click) = "insert()">Add</button>
+				</div>
+				<input type="text" class="form-control" size = "8" [(ngModel)]="inputToAdd" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
+			</div>
+			<br>
+			<div class="input-group mr-2 pl-2">
+				<div class="input-group-prepend pl-4">
+					<button type="button" class = "btn btn-primary" (click) = "delete()">Delete</button>
+				</div>
+				<input type="text" class="form-control mr-3" size = "8" [(ngModel)]="inputToDelete" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
+			</div>
+			<br>
+			<br>
+			<div class="input-group mr-2 pl-4">
+				<div class="input-group-prepend pl-2">
+					<button type="button" class = "btn btn-primary" (click) = "clear()">Clear</button>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+	<br>
+	<br>
+<div class = "Container-fluid" style = "background-color: #eee">
+	<div id="footer">
+		<!-- <svg width="660" height="500">
+			<g *ngIf="descendentSliced.length > 0;" transform="translate(90,20)">
+				<path class="link" *ngFor="let item of descendentSliced" style="stroke: red;" d={{"M" + item.y + "," + item.x + "C" + (item.y + item.parent.y) / 2 + "," + item.x
+				 + " " + (item.y + item.parent.y) / 2 + "," + item.parent.x
+				 + " " + item.parent.y + "," + item.parent.x}}/>
+				
+				<g *ngFor="let item of descendent" class="node node--internal" transform={{"translate(" + item.y + "," + item.x + ")" }}>
+					<circle r="15" style="stroke: black; fill: yellow;"></circle>
+					<text dy=".35em" x="-20" y="[object Object]" style="text-anchor: end;">{{item.data.element}}</text>
+			</g>
+		</svg> -->
+		<app-d3-tree [(treeData)] = "binaryTree.root"></app-d3-tree>
+	</div>
+</div>
