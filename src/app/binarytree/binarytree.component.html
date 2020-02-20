@@ -4,7 +4,7 @@
 	<!-- <div class = "row bg-light">
 	</div> -->
 	<!-- <br> -->
-	<div class = "Container w-75" style = "background-color : #eee">
+	<div class = "Container w-100" style = "background-color : #eee" >
 	<div class="row">
 		<br>
 		<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
@@ -23,18 +23,23 @@
 				<input type="text" class="form-control mr-3" size = "8" [(ngModel)]="inputToDelete" placeholder="Value" aria-label="Add Element" aria-describedby="btnGroupAddon">
 			</div>
 			<br>
-			<br>
-			<div class="input-group mr-2 pl-4">
+			<!-- <div class="input-group mr-2 pl-4"> -->
 				<div class="input-group-prepend pl-2">
 					<button type="button" class = "btn btn-primary" (click) = "clear()">Clear</button>
 				</div>
-			</div>
+			<!-- </div> -->
+			<!-- <div class="input-group mr-2 pl-2">
+				<div class="input-group-prepend pl-4">
+					<button type="button" class = "btn btn-primary" (click) = "getHeight()">Get Height</button>
+				</div>
+				<input type="text" class="form-control mr-3" size = "8" value = {{height}} aria-label="Add Element" aria-describedby="btnGroupAddon" readonly>
+			</div> -->
 		</div>	
 	</div>
 </div>
 	<br>
 	<br>
-<div class = "Container-fluid" style = "background-color: #eee">
+<div class = "Container-fluid">
 	<div id="footer">
 		<!-- <svg width="660" height="500">
 			<g *ngIf="descendentSliced.length > 0;" transform="translate(90,20)">

@@ -11,7 +11,7 @@ interface Node {
 }
 
 interface BinaryTree {
-  root : Node
+  root : Node;
 }
 
 interface treeView {
@@ -30,6 +30,7 @@ export class BinarytreeComponent implements OnInit {
   binaryTree : BinaryTree;
   inputToAdd : string;
   inputToDelete : string;
+  height : string;
 
 
   constructor(private http: HttpClient) { }
@@ -66,6 +67,15 @@ export class BinarytreeComponent implements OnInit {
       this.binaryTree = data;
       console.log(this.binaryTree);
     })
+  }
+
+  getHeight(){
+    this.http.post<BinaryTree>("http://localhost:8080/binarytree/v1/tree-height" , {inBinaryTree : this.binaryTree}).subscribe(data => {
+      this.binaryTree = data;
+      console.log(this.binaryTree);
+      this.inputToDelete = ''
+      // this.height = this.binaryTree.height;
+  })
   }
 
 }

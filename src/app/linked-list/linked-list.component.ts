@@ -63,21 +63,22 @@ export class LinkedListComponent implements OnInit {
       this.linkedList = data;
       console.log(this.inputToAdd);
       console.log(this.linkedList);
-      this.drawTree();
+      // this.drawTree();
     })  
     this.inputToAdd = ''
     this.inputAddFirst = true;
     console.log(this.linkedList);
-  }
+  }    
 
   addAt(){
+
     this.http.post<LinkedList>("http://localhost:8080/linkedlist/v1/addAt" , {inLinkedList : this.linkedList, index: this.inputToAddIndex, value : this.inputToAddValue}).subscribe(data => {
-      this.linkedList = data;
-      console.log(this.inputToAddIndex + " " + this.inputToAddValue);
-      console.log(this.linkedList);
-  })
-  this.inputToAddIndex = ''
-  this.inputToAddValue = ''
+    this.linkedList = data;
+    console.log(this.inputToAddIndex + " " + this.inputToAddValue);
+    console.log(this.linkedList);
+    })
+    this.inputToAddIndex = ''
+    this.inputToAddValue = ''
   }
 
   addLast(){
