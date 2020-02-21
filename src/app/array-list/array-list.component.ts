@@ -52,8 +52,8 @@ export class ArrayListComponent implements OnInit {
       this.http.post<ArrayList>("http://localhost:8080/arraylist/v1/addAt" , {inArrayList:this.arrayList, value : this.inputToAddValue, index :this.inputToAddIndex}).subscribe(data => {
         this.arrayList = data;
     })
-    // this.inputToAddValue = ''
-    // this.inputToAddIndex = ''
+    this.inputToAddValue = ''
+    this.inputToAddIndex = ''
     }
   }
 
@@ -63,6 +63,7 @@ export class ArrayListComponent implements OnInit {
       this.http.post<ArrayList>("http://localhost:8080/arraylist/v1/delete" , {inArrayList:this.arrayList, value : this.inputToDelete}).subscribe(data => {
         this.arrayList = data;
     })
+    this.inputToDelete = ''
     }
   }
 

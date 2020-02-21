@@ -1,12 +1,5 @@
 <br>
 <div class="container-fluid">
-	<div class = "row bg-light">
-		<div class = "col-3 m-5">
-		<ul class="list-group shadow-sm mb-5 bg-white rounded">
-		  <li class="list-group-item list-group-item-action" *ngFor="let item of (stack?stack.data:[])">{{item}}</li>
-		</ul>
-		</div>
-	</div>
 	<br>
 	<div class="row">
 		<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
@@ -35,5 +28,12 @@
 		<p *ngIf = 'popClicked' >
 			Popped Value : <input type = "text" class="form-control" value =  "{{popValue}}" readonly>
 		</p>
+	</div>	<div class = "row bg-light">
+		<div class = "col-3 m-5">
+		<ul class="list-group shadow-sm mb-5 bg-white rounded column steps" >
+		  <li class="list-group-item list-group-item-action" *ngFor="let item of (stack?stack.data:[])">{{item}}</li>
+		</ul>
+		</div>
 	</div>
+
 </div>	
